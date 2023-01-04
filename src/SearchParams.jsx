@@ -3,6 +3,7 @@ import { useSelector, useDispatch  } from "react-redux";
 import Results from "./Results";
 import useBreedList from "./useBreedList";
 import { all } from "./searchParamsSlice";
+import { useSearchQuery } from "./petApiService";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -13,7 +14,7 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState("");
   const [breeds] = useBreedList(animal);
 
-  const { data: pets } = useSearchQuery(searchParams);
+  let { data: pets } = useSearchQuery(searchParams);
   pets = pets ?? [];
 
   return (
